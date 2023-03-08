@@ -1,0 +1,12 @@
+.search{
+    border-radius: 10px;
+    border-color: black;
+    font-size: auto;
+}
+
+.button{
+    border-radius: 10px;
+    margin: 1px;
+    background-color: darkgreen;
+    color: greenyellow;
+}
