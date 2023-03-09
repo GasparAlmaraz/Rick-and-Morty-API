@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    justify-content: right;
+    background-color: cadetblue;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.searchTitle{
+    color: white;
+    margin-right: 10px;
+}
