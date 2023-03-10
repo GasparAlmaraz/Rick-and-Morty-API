@@ -3,8 +3,8 @@ import './App.css'
 import Cards from './components/Cards/Cards.jsx'
 import Nav from './components/Nav/Nav'
 import { Routes, Route } from 'react-router-dom';
-import About from './components/routing/About/About'
-import Detail from './components/routing/Detail/Detail'
+import About from './components/Views/About/About'
+import Detail from './components/Views/Detail/Detail'
 
 function App () {
 
@@ -17,13 +17,17 @@ function App () {
     const APIKEY = "67f45d299611.46234457e8c467c632bb";
     // !!!!!! MUY IMPORTANTE
 
+    if(characters.find((char) => char.id === id)){
+      return alert("Personaje repetido")
+    }
+
     fetch(`${URLBASE}/character/${id}?key=${APIKEY}`)
     .then((response) => response.json())
     .then((data) => {
-      if (data.name && !characters.find((char) => char.id === data.id)) {
+      if (data.name) {
         setCharacters((oldChars) => [...oldChars, data]);
       } else {
-        window.alert('No hay personajes con ese ID o ya fue agregado.');
+        window.alert('No hay personajes con ese ID.');
       }
        });
   };
