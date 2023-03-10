@@ -11,6 +11,7 @@ export default function SearchBar({onSearch}) {
 
    return (
       <div>
+         <span className={styles.searchTitle} >Buscador de Personajes</span>
          <input className={styles.search} type='search' onChange={handleChange}/>
          <button className={styles.button} onClick={()=> onSearch(id)}>Agregar</button>
       </div>

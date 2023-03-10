@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Detail(){
     
@@ -36,6 +37,10 @@ export default function Detail(){
           <h2>Gender: {character.gender}</h2>
           <h2>Origin: {character.origin?.name}</h2>
           <img src={character.image} alt=""/>
+          <hr/>
+          <Link to='/'>
+            <button>Home</button>
+          </Link>
         </div>
       )
 }
