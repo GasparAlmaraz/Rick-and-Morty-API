@@ -2,7 +2,8 @@
     border-radius: 10px;
     border-color: black;
     font-size: auto;
-    align-items: center;
+    display: flex;
+    justify-content: right;
 }
 
 .button{
@@ -10,4 +11,6 @@
     margin: 1px;
     background-color: darkgreen;
     color: greenyellow;
+    display: flex;
+    justify-content: right;
 }
