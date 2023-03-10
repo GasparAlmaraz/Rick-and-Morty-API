@@ -6,6 +6,7 @@ export default function Nav(props){
     return (
     <div className={styles.container}>
         <NavLink to='/'>Home</NavLink>
+        <NavLink to='/cards'>Cards</NavLink>
         <NavLink to='/about'>About</NavLink>
         <SearchBar onSearch={props.onSearch}/>
     </div>

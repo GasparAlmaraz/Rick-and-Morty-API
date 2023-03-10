@@ -6,6 +6,7 @@ export default function Cards({characters, onClose}) {
    const listaPersonajes = characters.map((personaje)=> {
       return (
          <Card
+            key={personaje.id}
             id={personaje.id}
             name={personaje.name}
             species={personaje.species}
