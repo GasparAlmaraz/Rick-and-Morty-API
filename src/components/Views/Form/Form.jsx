@@ -2,7 +2,7 @@ import styles from './Form.module.css';
 import { useState } from 'react';
 import validation from './validation';
 
-export default function Form(){
+export default function Form(props){
 
     const [userData, setUserData] = useState({ 
         username: '', 
@@ -22,16 +22,16 @@ export default function Form(){
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const errorsArray = Object.values(errors);
-        if (errorsArray.length === 0) {
-          alert("Datos completos");
-          
-          setUserData({ username: "", password: ""});
-          setErrors(validation({ email: "", password: ""}));
+        const validationErrors = validation(userData);
+        setErrors(validationErrors);
+        if (Object.keys(validationErrors).length === 0) {
+        setErrors({});
+        props.login(userData);
         } else {
-          alert("Debe llenar todos los campos");
+        alert("Debe llenar todos los campos");
+        setErrors(validationErrors);
         }
-      }
+    }
 
     return(
         <form className={styles.container} onSubmit={handleSubmit}>
@@ -40,13 +40,13 @@ export default function Form(){
             </label>
             <input className={errors.username && 'warning'} name='username' type="text" value={userData.username} onChange={handleInputChange}>
             </input>
-            <p className='danger'>{errors.username}</p>
+            <p>{errors.username}</p>
             <label htmlFor='password'>
                 Password 
             </label>
             <input className={errors.password && 'warning'} name='password' type="password" value={userData.password} onChange={handleInputChange}>
             </input>
-            <p className='danger'>{errors.password}</p>
+            <p>{errors.password}</p>
             <button type='submit'>LOGIN</button>
         </form>
     )
