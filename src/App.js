@@ -12,8 +12,8 @@ function App () {
   const [characters, setCharacters] = useState([]);
 
   const [access, setAccess] = useState(false);
-  const username = "gasparalmaraz@gmail.com";
-  const password = "anashe1.0";
+  const username = "ejemplo@gmail.com";
+  const password = "password1";
   const navigate = useNavigate();
 
   useEffect(() => {
