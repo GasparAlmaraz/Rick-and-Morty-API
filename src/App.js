@@ -60,6 +60,7 @@ function App () {
   };
 
   const location = useLocation();
+  
   return (
     <div className='App' style={{ padding: '25px' }}>
         {location.pathname !== "/" && <Nav onSearch={onSearch} logout={logout}/>} 
