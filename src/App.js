@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
-import Cards from './components/Cards/Cards.jsx'
-import Nav from './components/Nav/Nav'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import About from './components/Views/About/About'
-import Detail from './components/Views/Detail/Detail'
-import Form from './components/Views/Form/Form';
-import Favorites from './components/Views/Favorites/Favorites'
+
+import { Cards, Nav, About, Detail, Form, Favorites } from './components';
 
 function App () {
 
