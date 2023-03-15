@@ -6,6 +6,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import About from './components/Views/About/About'
 import Detail from './components/Views/Detail/Detail'
 import Form from './components/Views/Form/Form';
+import Favorites from './components/Views/Favorites/Favorites'
 
 function App () {
 
@@ -23,7 +24,7 @@ function App () {
   const login = (userData) => {
     if(userData.password === password && userData.username === username){
       setAccess(true);
-      navigate('/home');
+      navigate('/cards');
     }
   }
 
@@ -69,6 +70,7 @@ function App () {
           <Route path='/cards' element= {<Cards characters={characters} onClose={onClose}/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/detail/:detailId' element={<Detail/>}/>
+          <Route path='/favorites' element={<Favorites/>}/>
         </Routes>
     </div>
   )

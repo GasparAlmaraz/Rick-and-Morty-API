@@ -27,7 +27,7 @@ export default function Detail(){
             window.alert("No hay personajes con ese ID");
           });
         return setCharacter({});
-      }, [detailId]);
+    }, [detailId]);
 
       return(
         <div>
@@ -38,7 +38,7 @@ export default function Detail(){
           <h2>Origin: {character.origin?.name}</h2>
           <img src={character.image} alt=""/>
           <hr/>
-          <Link to='/'>
+          <Link to='/cards'>
             <button>Home</button>
           </Link>
         </div>

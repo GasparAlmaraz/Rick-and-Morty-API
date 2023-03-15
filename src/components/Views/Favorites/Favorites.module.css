@@ -1,0 +1,7 @@
+.cardContainer{
+    display:contents;
+    width: 90%;
+    margin: auto;
+    padding: 1em;
+    grid-template-columns: repeat(4,1fr);
+}

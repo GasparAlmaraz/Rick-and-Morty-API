@@ -6,9 +6,9 @@ export default function Nav(props){
     return (
     <div className={styles.container}>
         <button onClick={props.logout}>LOG OUT</button>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/cards'>Cards</NavLink>
+        <NavLink to='/cards'>Home</NavLink>
         <NavLink to='/about'>About</NavLink>
+        <NavLink to='/favorites'>Favorites</NavLink>
         <SearchBar onSearch={props.onSearch}/>
     </div>
     );

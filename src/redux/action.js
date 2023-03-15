@@ -8,7 +8,7 @@ export function addFavCharacter(character){
     }
 }
 
-export function deleteProduct(id){
+export function deleteCharacter(id){
     return{
         type: DELETE_CHARACTER,
         payload: id
