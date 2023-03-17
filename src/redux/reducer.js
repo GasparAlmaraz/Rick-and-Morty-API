@@ -11,7 +11,7 @@ function rootReducer(state = initialState, action){
         case ADD_FAV_CHARACTER: {
             return { 
                 ...state, 
-                myFavorites: [...state.allCharacters, action.payload],
+                myFavorites: [...state.myFavorites, action.payload],
                 allCharacters: [...state.allCharacters, action.payload] 
             };
         };
