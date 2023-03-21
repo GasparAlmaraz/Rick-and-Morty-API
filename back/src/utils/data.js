@@ -6,8 +6,6 @@ const characters = [
     gender: "Male",
     image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
   },
-
-
   {
     id: 2,
     name: "Morty Smith",
@@ -31,4 +29,4 @@ const characters = [
   },
 ];
 
-export default characters;
+module.exports = characters;

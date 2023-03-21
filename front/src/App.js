@@ -31,17 +31,17 @@ function App () {
   }
 
   function onSearch(id) {
-    const URLBASE = "https://be-a-rym.up.railway.app/api";
+    const URLBASE = "http://localhost:3001/rickandmorty";
     
-    // !!!!!! MUY IMPORTANTE
-    const APIKEY = "67f45d299611.46234457e8c467c632bb";
-    // !!!!!! MUY IMPORTANTE
+    // // !!!!!! MUY IMPORTANTE
+    // const APIKEY = "67f45d299611.46234457e8c467c632bb";
+    // // !!!!!! MUY IMPORTANTE
 
     if(characters.find((char) => char.id === id)){
       return alert("Personaje repetido")
     }
 
-    fetch(`${URLBASE}/character/${id}?key=${APIKEY}`)
+    fetch(`${URLBASE}/character/${id}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.name) {
