@@ -8,7 +8,7 @@ export default function Detail(){
     const {detailId} = useParams();
     useEffect(() => {
 
-      const URLBASE = "https://be-a-rym.up.railway.app/api";
+      const URLBASE = "http://localhost:3001/rickandmorty/detail/";
     
       // !!!!!! MUY IMPORTANTE
       const APIKEY = "67f45d299611.46234457e8c467c632bb";

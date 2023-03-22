@@ -31,7 +31,7 @@ function App () {
   }
 
   function onSearch(id) {
-    const URLBASE = "http://localhost:3001/rickandmorty";
+    const URLBASE = "http://localhost:3001/rickandmorty/onsearch";
     
     // // !!!!!! MUY IMPORTANTE
     // const APIKEY = "67f45d299611.46234457e8c467c632bb";
@@ -41,7 +41,7 @@ function App () {
       return alert("Personaje repetido")
     }
 
-    fetch(`${URLBASE}/character/${id}`)
+    fetch(`${URLBASE}/${id}`)
     .then((response) => response.json())
     .then((data) => {
       if (data.name) {
