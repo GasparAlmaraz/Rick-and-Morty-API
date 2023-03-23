@@ -1,5 +1,4 @@
 let http = require("http");
-let fs = require("fs");
 let getCharById = require("./controllers/getCharById");
 let getCharDetail = require("./controllers/getCharDetail");
 
@@ -12,16 +11,6 @@ http
         const id = req.url.split("/").pop();
 
         getCharById(res,id);
-
-        // const character = data.find((c) => c.id == id);
-
-        // if (character) {
-        //     res.setHeader("Content-Type", "application/json");
-        //     res.end(JSON.stringify(character));
-        // } else {
-        //     res.statusCode = 404;
-        //     res.end("Personaje no encontrado");
-        // }
     } else if(req.url.includes("detail")){
         const id = req.url.split("/").pop();
         getCharDetail(res,id);

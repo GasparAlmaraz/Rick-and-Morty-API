@@ -9,12 +9,8 @@ export default function Detail(){
     useEffect(() => {
 
       const URLBASE = "http://localhost:3001/rickandmorty";
-    
-      // !!!!!! MUY IMPORTANTE
-      const APIKEY = "67f45d299611.46234457e8c467c632bb";
-      // !!!!!! MUY IMPORTANTE
 
-        fetch(`${URLBASE}/detail/${detailId}?key=${APIKEY}`)
+        fetch(`${URLBASE}/detail/${detailId}`)
           .then((response) => response.json())
           .then((char) => {
             if (char.name) {

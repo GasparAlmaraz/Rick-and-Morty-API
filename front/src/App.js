@@ -32,10 +32,6 @@ function App () {
 
   function onSearch(id) {
     const URLBASE = "http://localhost:3001/rickandmorty/onsearch";
-    
-    // // !!!!!! MUY IMPORTANTE
-    // const APIKEY = "67f45d299611.46234457e8c467c632bb";
-    // // !!!!!! MUY IMPORTANTE
 
     if(characters.find((char) => char.id === id)){
       return alert("Personaje repetido")
