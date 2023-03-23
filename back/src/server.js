@@ -1,8 +1,7 @@
 let http = require("http");
 let fs = require("fs");
-let data = require("./utils/data");
-let {getCharById} = require("./controllers/getCharById");
-let {getCharDetail} = require("./controllers/getCharDetail");
+let getCharById = require("./controllers/getCharById");
+let getCharDetail = require("./controllers/getCharDetail");
 
 const PORT = 3001;
 

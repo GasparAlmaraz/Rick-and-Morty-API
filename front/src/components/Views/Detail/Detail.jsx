@@ -8,13 +8,13 @@ export default function Detail(){
     const {detailId} = useParams();
     useEffect(() => {
 
-      const URLBASE = "http://localhost:3001/rickandmorty/detail/";
+      const URLBASE = "http://localhost:3001/rickandmorty";
     
       // !!!!!! MUY IMPORTANTE
       const APIKEY = "67f45d299611.46234457e8c467c632bb";
       // !!!!!! MUY IMPORTANTE
 
-        fetch(`${URLBASE}/character/${detailId}?key=${APIKEY}`)
+        fetch(`${URLBASE}/detail/${detailId}?key=${APIKEY}`)
           .then((response) => response.json())
           .then((char) => {
             if (char.name) {
@@ -23,8 +23,8 @@ export default function Detail(){
               window.alert("No hay personajes con ese ID");
             }
           })
-          .catch((err) => {
-            window.alert("No hay personajes con ese ID");
+          .catch(() => {
+            window.alert("Error");
           });
         return setCharacter({});
     }, [detailId]);
