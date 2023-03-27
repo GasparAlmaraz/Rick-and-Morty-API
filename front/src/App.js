@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 import { Cards, Nav, About, Detail, Form, Favorites } from './components';
+const URLBASE = process.env.URL;
+const APIKEY = process.env.APIKEY;
 
-function App () {
-
+function App() {
   const [characters, setCharacters] = useState([]);
 
   const [access, setAccess] = useState(false);
@@ -18,7 +20,7 @@ function App () {
   }, [access]);
 
   const login = (userData) => {
-    if(userData.password === password && userData.username === username){
+    if (userData.password === password && userData.username === username) {
       setAccess(true);
       navigate('/cards');
     }
@@ -31,21 +33,21 @@ function App () {
   }
 
   function onSearch(id) {
-    const URLBASE = "http://localhost:3001/rickandmorty/onsearch";
 
-    if(characters.find((char) => char.id === id)){
+    if (characters.find((char) => char.id === id)) {
       return alert("Personaje repetido")
     }
 
-    fetch(`${URLBASE}/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.name) {
-        setCharacters((oldChars) => [...oldChars, data]);
-      } else {
-        window.alert('No hay personajes con ese ID.');
-      }
-       });
+    axios.get(`${URLBASE}/${id}?key=${APIKEY}`)
+      .then(response => {
+        const data = response.data;
+        if (data.name) {
+          setCharacters(oldChars => [...oldChars, data]);
+        } else {
+          window.alert('No hay personajes con ese ID.');
+        }
+      })
+      .catch(error => console.log(error));
   };
 
   const onClose = (id) => {
@@ -53,20 +55,20 @@ function App () {
   };
 
   const location = useLocation();
-  
+
   return (
     <div className='App' style={{ padding: '25px' }}>
-        {location.pathname !== "/" && <Nav onSearch={onSearch} logout={logout}/>} 
-        <Routes>
-          <Route path='/' element= {<Form login={login}/>}/>
-          <Route path='/cards' element= {<Cards characters={characters} onClose={onClose}/>}/>
-          <Route path='/about' element={<About/>}/>
-          <Route path='/detail/:detailId' element={<Detail/>}/>
-          <Route path='/favorites' element={<Favorites/>}/>
-        </Routes>
+      {location.pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />}
+      <Routes>
+        <Route path='/' element={<Form login={login} />} />
+        <Route path='/cards' element={<Cards characters={characters} onClose={onClose} />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/detail/:detailId' element={<Detail />} />
+        <Route path='/favorites' element={<Favorites />} />
+      </Routes>
     </div>
   )
-      
+
 }
 
 export default App;

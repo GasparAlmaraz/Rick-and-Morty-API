@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const URLBASE = "https://be-a-rym.up.railway.app/api";
-const APIKEY = "67f45d299611.46234457e8c467c632bb";
+const URLBASE = process.env.URL;
+const APIKEY = process.env.APIKEY;
 
 const succesH = (response, res)=>{
     const obj = {
@@ -11,17 +11,17 @@ const succesH = (response, res)=>{
         image: response.data.image,
         origin: response.data.origin
     }
-    res.writeHead(200, "Content-Type: application/json");
-    res.end(JSON.stringify(obj));
+    res.json(obj);
 };
 
 const errorH = (err, res)=>{
-    res.writeHead(500, "Content-Type: text/plain");
-    res.end(err.message);
+    res.status(500).json(err);
 }
 
-const getCharDetail = (res, ID) => {
+const getCharDetail = (req, res) => {
     
+    const params = req.params;
+    const ID = params.id;
     axios.get(`${URLBASE}/character/${ID}?key=${APIKEY}`)
     .then(response => succesH(response,res))
     .catch(error => errorH(error, res))

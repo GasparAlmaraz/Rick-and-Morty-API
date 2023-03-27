@@ -1,23 +1,18 @@
-let http = require("http");
+const express = require('express');
+const server = express();
+const PORT = 3001;
 let getCharById = require("./controllers/getCharById");
 let getCharDetail = require("./controllers/getCharDetail");
+const router = require("./routers/index");
 
-const PORT = 3001;
+server.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+});
+server.use(express.json());
 
-http
-.createServer((req,res)=>{
-    res.setHeader('Access-Control-Allow-Origin','*');
-    if(req.url.includes("onsearch")){
-        const id = req.url.split("/").pop();
+server.use("/", router);
 
-        getCharById(res,id);
-    } else if(req.url.includes("detail")){
-        const id = req.url.split("/").pop();
-        getCharDetail(res,id);
-    } else {
-        res.statusCode = 404;
-        res.end("Recurso no encontrado");
-    }
-})
-.listen(PORT, "localhost")
-;
+server.listen(PORT, () => {
+    console.log("Server raised in port " + PORT);
+});
