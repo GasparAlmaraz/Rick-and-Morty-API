@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+const {URL, APIKEY} = process.env;
 
 export default function Detail(){
     
@@ -8,9 +9,8 @@ export default function Detail(){
     const {detailId} = useParams();
     useEffect(() => {
 
-      const URLBASE = "http://localhost:3001/rickandmorty";
 
-        fetch(`${URLBASE}/detail/${detailId}`)
+        fetch(`${URL}/detail/${detailId}?key=${APIKEY}`)
           .then((response) => response.json())
           .then((char) => {
             if (char.name) {
