@@ -1,30 +1,17 @@
 const axios = require('axios');
-const URLBASE = process.env.URL;
-const APIKEY = process.env.APIKEY;
-
-
-const succesH = (response, res)=>{
-    const obj = {
-        id: response.data.id,
-        name: response.data.name,
-        gender: response.data.gender,
-        species: response.data.species,
-        image: response.data.image
-    }
-    res.json(obj);
-};
-
-const errorH = (err, res)=>{
-    res.status(500).json(err);
-}
+const {URL, APIKEY} = process.env;
 
 const getCharById = (req,res) => {
     
-    const params = req.params;
-    const ID = params.id;
-    axios.get(`${URLBASE}/character/${ID}?key=${APIKEY}`)
-    .then(response => succesH(response,res))
-    .catch(error => errorH(error, res))
+    const {id} = req.params;
+    const URL ="https://be-a-rym.up.railway.app/api";
+    const APIKEY = "67f45d299611.46234457e8c467c632bb";
+    axios.get(`${URL}/character/${id}?key=${APIKEY}`)
+    .then(response => {
+        const {id, name, species, image, gender} = response.data
+        res.status(200).json({id, name, species, image, gender});
+    })
+    .catch(error => res.status(500).json({error: error.message}));
 }
 
 module.exports = getCharById;

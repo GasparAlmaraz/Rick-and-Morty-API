@@ -4,8 +4,6 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 import { Cards, Nav, About, Detail, Form, Favorites } from './components';
-const URLBASE = process.env.URL;
-const APIKEY = process.env.APIKEY;
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -38,7 +36,9 @@ function App() {
       return alert("Personaje repetido")
     }
 
-    axios.get(`${URLBASE}/${id}?key=${APIKEY}`)
+    const URLBASE = "http://localhost:3001";
+
+    axios.get(`${URLBASE}/onsearch/${id}`)
       .then(response => {
         const data = response.data;
         if (data.name) {

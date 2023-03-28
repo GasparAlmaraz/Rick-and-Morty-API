@@ -12,7 +12,7 @@ function Card({ id, name, species, gender, image, onClose, addFavorite, deleteFa
       if (isFav) {
          deleteFavorite(id);
       } else {
-         addFavorite({ id, name, species, gender, image, onClose });
+         addFavorite({ id, name, species, gender, image });
       }
        setIsFav(!isFav);
    };

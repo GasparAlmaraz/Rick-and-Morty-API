@@ -1,30 +1,17 @@
 const axios = require('axios');
 
-const URLBASE = process.env.URL;
-const APIKEY = process.env.APIKEY;
-
-const succesH = (response, res)=>{
-    const obj = {
-        name: response.data.name,
-        gender: response.data.gender,
-        species: response.data.species,
-        image: response.data.image,
-        origin: response.data.origin
-    }
-    res.json(obj);
-};
-
-const errorH = (err, res)=>{
-    res.status(500).json(err);
-}
+const URLBASE = "https://be-a-rym.up.railway.app/api";
+const APIKEY = "67f45d299611.46234457e8c467c632bb"
 
 const getCharDetail = (req, res) => {
     
-    const params = req.params;
-    const ID = params.id;
-    axios.get(`${URLBASE}/character/${ID}?key=${APIKEY}`)
-    .then(response => succesH(response,res))
-    .catch(error => errorH(error, res))
+    const {id} = req.params;
+    axios.get(`${URLBASE}/character/${id}?key=${APIKEY}`)
+    .then(response => {
+        const {id, name, species, image, gender, origin} = response.data
+        res.status(200).json({id, name, species, image, gender, origin});
+    })
+    .catch(error => res.status(500).json({error: error.message}));
 }
 
 module.exports = getCharDetail;
