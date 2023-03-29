@@ -28,15 +28,6 @@ export function orderCards(id){
     }
 }
 
-export const getCharacterDetail = (id) => {
-    return async function (dispatch) {
-      const URL_BASE = "http://localhost:3001";
-  
-      const response = await axios.get(`${URL_BASE}/detail/${id}`)
-      dispatch({ type: GET_CHARACTER_DETAIL, payload: response.data });
-    };
-  };
-
 export const getFavorites = () => {
     return async function (dispatch) {
         const URL_BASE = "http://localhost:3001";
