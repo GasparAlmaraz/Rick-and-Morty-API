@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../Card/Card";
 import styles from './Favorites.module.css'
-import { filterCards, orderCards } from "../../../redux/action";
+import { filterCards, getFavorites, orderCards } from "../../../redux/action";
 
 const Favorites = () => {
 

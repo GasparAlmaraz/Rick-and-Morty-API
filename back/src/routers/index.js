@@ -20,7 +20,7 @@ router.get('/rickandmorty/fav', (req, res) => {
 });
 
 
-router.delete('/fav/:id', (req, res) => {
+router.delete('/rickandmorty/fav/:id', (req, res) => {
     const id = req.params.id;
     const fav = favs.filter(fav => fav.id !== id);
     res.status(200).json(fav);
