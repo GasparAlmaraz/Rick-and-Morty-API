@@ -1,8 +1,5 @@
 const axios = require('axios');
 
-const URLBASE = "https://be-a-rym.up.railway.app/api";
-const APIKEY = "67f45d299611.46234457e8c467c632bb"
-
 const getCharDetail = async (req, res) => {
     
     try {
