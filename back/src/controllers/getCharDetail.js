@@ -1,11 +1,12 @@
+require('dotenv').config();
 const axios = require('axios');
+
+const { URL, APIKEY } = process.env;
 
 const getCharDetail = async (req, res) => {
     
     try {
         const { id } = req.params;
-        const URL = "https://be-a-rym.up.railway.app/api";
-        const APIKEY = "67f45d299611.46234457e8c467c632bb";
         const response = await axios.get(`${URL}/character/${id}?key=${APIKEY}`)
 
         const obj = {

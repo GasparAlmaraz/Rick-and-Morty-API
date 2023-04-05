@@ -8,6 +8,9 @@ let getCharDetail = require("./controllers/getCharDetail");
 const router = require("./routers");
 const morgan = require("morgan");
 const cors = require("cors");
+const { conn } = require('./DB_connection');
+
+conn.sync({force: false});
 
 server.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
