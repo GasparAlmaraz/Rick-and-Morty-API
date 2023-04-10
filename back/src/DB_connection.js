@@ -23,7 +23,8 @@ FavoriteModel(sequelize);
 
 // Ejercicio 06
 // ¡Relaciona tus modelos aquí abajo!
-const { User, Favorite } = sequelize.models;
+const User = FavoriteModel(sequelize);
+const Favorite = FavoriteModel(sequelize);
 User.belongsToMany(Favorite, {through: 'user_favorite'});
 Favorite.belongsToMany(User, {through: 'user_favorite'});
 
